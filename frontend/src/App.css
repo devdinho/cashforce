@@ -18,7 +18,6 @@
   flex-direction: column;
   gap: 30px;
   flex-basis: 288px;
-  border-right: 1px solid #eee;
   background-color: #FBFDFE;
   color: #00AD8C;
   font-weight: 500;
@@ -55,9 +54,90 @@
   margin-right: 15px;
 }
 
-.header {
-  height: 60px;
-  border-bottom: 1px solid #eee;
+.main-content {
+  width: 100%;
 }
 
-.content {}
+.main-content header {
+  height: 64px;
+  border-bottom: 1px solid #DFE2EB;
+}
+
+.main-content h3 {
+  font-size: 24px;
+  color: #021B51;
+}
+
+.main-content p {
+  color: #727D94;
+}
+
+.notas-fiscais-label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 48px;
+  margin-bottom: 19px;
+  gap: 5px;
+}
+
+
+/* TODO: Refactor table to use grid layout to align items correctly and make it reponsive */
+
+table {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 2rem;
+  text-align: left;
+  /* border-spacing: 1rem; */
+}
+
+table tr {
+  display: flex;
+  align-items: center;
+  /* gap: 80px; */
+  /* justify-content: flex-start; */
+}
+
+table tr:not(:first-child) {
+  /* box-shadow: 0 0 0 1px #DFE2EB; */
+  border: 1px solid #DFE2EB;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+table tr th {
+  color: #A1A8B8;
+  font-size: 12px;
+  margin-left: 15px;
+  /* padding-left: 30px;
+  padding-right: 70px; */
+}
+
+table tr td {
+  color: #4D5566;
+  font-size: 14px;
+  font-weight: 500;
+  /* padding: 12px;
+  padding-left: 30px; */
+}
+
+table tr td:last-child {
+  font-weight: 700;
+}
+
+table tr td:nth-last-child(-n+2) {
+  color: #00AD8C;
+}
+
+table tr button {
+  font-size: 12px;
+  border: 1px solid #CAD3FF;
+  border-radius: 24px;
+  padding: 8px 29px;
+  color: #727D94;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: transparent;
+}
