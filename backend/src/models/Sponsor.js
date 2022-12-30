@@ -1,11 +1,11 @@
 const { DataTypes } = require("sequelize");
-const database = require("../database");
+const database = require("../database/database");
 
-const Buyer = database.define("buyer", {
+const Sponsor = database.define("sponsor", {
   id: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
     primaryKey: true,
+    autoIncremnet: true,
     allowNull: false,
   },
   name: {
@@ -57,6 +57,15 @@ const Buyer = database.define("buyer", {
   state: {
     type: DataTypes.STRING,
   },
+  bank: {
+    type: DataTypes.STRING,
+  },
+  bankAgency: {
+    type: DataTypes.STRING,
+  },
+  account: {
+    type: DataTypes.STRING,
+  },
   phoneNumber: {
     type: DataTypes.STRING,
   },
@@ -73,12 +82,9 @@ const Buyer = database.define("buyer", {
       key: "id",
     }
   },
-  confirm: {
-    type: DataTypes.TINYINT,
-  },
   email: {
     type: DataTypes.STRING,
   },
 });
 
-module.exports = Buyer;
+module.exports = Sponsor;

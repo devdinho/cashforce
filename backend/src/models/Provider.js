@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
-const database = require("../database");
+const database = require("../database/database");
 
-const Sponsor = database.define("sponsor", {
+const Provider = database.define("provider", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -66,6 +66,9 @@ const Sponsor = database.define("sponsor", {
   account: {
     type: DataTypes.STRING,
   },
+  documents: {
+    type: DataTypes.STRING,
+  },
   phoneNumber: {
     type: DataTypes.STRING,
   },
@@ -80,11 +83,11 @@ const Sponsor = database.define("sponsor", {
     references: {
       model: "cnpjs",
       key: "id",
-    }
+    },
   },
   email: {
     type: DataTypes.STRING,
   },
 });
 
-module.exports = Sponsor;
+module.exports = Provider;

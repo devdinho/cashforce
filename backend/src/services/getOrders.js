@@ -1,6 +1,6 @@
-const Order = require("../database/models/Order");
-const Buyer = require("../database/models/Buyer");
-const Provider = require("../database/models/Provider");
+const Order = require("../models/Order");
+const Buyer = require("../models/Buyer");
+const Provider = require("../models/Provider");
 
 const getOrders = async () => {
   try {

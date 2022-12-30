@@ -1,11 +1,11 @@
 const { DataTypes } = require("sequelize");
-const database = require("../database");
+const database = require("../database/database");
 
-const Provider = database.define("provider", {
+const Buyer = database.define("buyer", {
   id: {
     type: DataTypes.INTEGER,
+    autoIncrement: true,
     primaryKey: true,
-    autoIncremnet: true,
     allowNull: false,
   },
   name: {
@@ -57,18 +57,6 @@ const Provider = database.define("provider", {
   state: {
     type: DataTypes.STRING,
   },
-  bank: {
-    type: DataTypes.STRING,
-  },
-  bankAgency: {
-    type: DataTypes.STRING,
-  },
-  account: {
-    type: DataTypes.STRING,
-  },
-  documents: {
-    type: DataTypes.STRING,
-  },
   phoneNumber: {
     type: DataTypes.STRING,
   },
@@ -83,11 +71,14 @@ const Provider = database.define("provider", {
     references: {
       model: "cnpjs",
       key: "id",
-    },
+    }
+  },
+  confirm: {
+    type: DataTypes.TINYINT,
   },
   email: {
     type: DataTypes.STRING,
   },
 });
 
-module.exports = Provider;
+module.exports = Buyer;
