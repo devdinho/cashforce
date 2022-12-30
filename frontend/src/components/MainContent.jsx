@@ -1,4 +1,20 @@
+import { useState, useEffect } from 'react';
+
 const MainContent = () => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/");
+        const data = await response.json();
+        setOrders(() => data);
+      }
+      catch(err) {
+        console.log(err);
+      }
+    })();
+  }, []);
 
   return (
     <div className="main-content">
@@ -17,33 +33,27 @@ const MainContent = () => {
           <th>VALOR</th>
           <th>STATUS</th>
         </tr>
-        <tr>
-          <td>1234</td>
-          <td>SACADO 001</td>
-          <td>CEDENTE 002</td>
-          <td>12/02/2020</td>
-          <td>$49.725,00</td>
-          <td>RECEBIDO</td>
-          <button>Dados do cedente</button>
-        </tr>
-        <tr>
-          <td>1234</td>
-          <td>SACADO 001</td>
-          <td>CEDENTE 002</td>
-          <td>12/02/2020</td>
-          <td>$49.725,00</td>
-          <td>RECEBIDO</td>
-          <button>Dados do cedente</button>
-        </tr>
-        <tr>
-          <td>1234</td>
-          <td>SACADO 001</td>
-          <td>CEDENTE 002</td>
-          <td>12/02/2020</td>
-          <td>$49.725,00</td>
-          <td>RECEBIDO</td>
-          <button>Dados do cedente</button>
-        </tr>
+        {
+          orders.map((order, key) => {
+            const { orderNumber, emissionDate, value, buyer, provider } = order;
+            const [year, month, day] = emissionDate.replace(/T.+/, "").split("-");
+            const money = new Intl
+              .NumberFormat(undefined, { style: "currency", currency: "BRL" })
+              .format(value);
+
+            return (
+              <tr key={ key }>
+                <td>{ orderNumber }</td>
+                <td>{ buyer.name }</td>
+                <td>{ provider.name }</td>
+                <td>{ `${day}/${month}/${year}` }</td>
+                <td>{ money }</td>
+                <td>RECEBIDO</td>
+                <button>Dados do cedente</button>
+              </tr>
+            )
+          })
+        }
       </table>
     </div>
   )
