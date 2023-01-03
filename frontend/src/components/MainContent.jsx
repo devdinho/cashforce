@@ -1,5 +1,17 @@
-import { useState, useEffect } from 'react';
-import CashforceHands from './CashforceHands';
+import { useState, useEffect } from "react";
+import CashforceHands from "./CashforceHands";
+
+const orderStatus = [
+  "Pendente de confirmação",
+  "Pedido confirmado",
+  "Não reconhece o pedido",
+  "Mercadoria não recebida",
+  "Recebida com avaria",
+  "Devolvida",
+  "Recebida com devolução parcial",
+  "Recebida e confirmada",
+  "Pagamento Autorizado"
+];
 
 const MainContent = () => {
   const [orders, setOrders] = useState([]);
@@ -40,7 +52,7 @@ const MainContent = () => {
           </thead>
           {
             orders.map((order, key) => {
-              const { orderNumber, emissionDate, value, buyer, provider } = order;
+              const { orderNumber, emissionDate, value, buyer, provider, orderStatusBuyer } = order;
               const [year, month, day] = emissionDate.replace(/T.+/, "").split("-");
               const money = new Intl
                 .NumberFormat(undefined, { style: "currency", currency: "BRL" })
@@ -54,7 +66,7 @@ const MainContent = () => {
                     <td>{ provider.name }</td>
                     <td>{ `${day}/${month}/${year}` }</td>
                     <td>{ money }</td>
-                    <td>RECEBIDO</td>
+                    <td>{ orderStatus[orderStatusBuyer] }</td>
                     <td><button>Dados do cedente</button></td>
                   </tr>
                 </tbody>
