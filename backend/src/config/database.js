@@ -1,7 +1,7 @@
 module.exports = {
   host: "localhost",
   username: "root",
-  password: "321321",
+  password: null,
   dialect: "mysql",
   database: "cashforce_v3",
 };
