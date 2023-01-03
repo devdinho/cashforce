@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import CashforceHands from './CashforceHands';
 
 const MainContent = () => {
   const [orders, setOrders] = useState([]);
@@ -17,44 +18,51 @@ const MainContent = () => {
   }, []);
 
   return (
-    <div className="main-content">
+    <div className="container">
       <header></header>
-      <div className="notas-fiscais-label">
-        <h3>Notas fiscais</h3>
-        <p>Visualize as notas fiscais que você tem.</p>
-      </div>
+      <main className="main-content">
+        <div className="notas-fiscais-container">
+          <CashforceHands stroke="#021B51" />
+          <h3>Notas fiscais</h3>
+          <p>Visualize as notas fiscais que você tem.</p>
+        </div>
 
-      <table>
-        <tr>
-          <th>NOTA FISCAL</th>
-          <th>SACADO</th>
-          <th>CEDENTE</th>
-          <th>EMISSÃO</th>
-          <th>VALOR</th>
-          <th>STATUS</th>
-        </tr>
-        {
-          orders.map((order, key) => {
-            const { orderNumber, emissionDate, value, buyer, provider } = order;
-            const [year, month, day] = emissionDate.replace(/T.+/, "").split("-");
-            const money = new Intl
-              .NumberFormat(undefined, { style: "currency", currency: "BRL" })
-              .format(value);
+        <table>
+          <thead>
+            <tr>
+              <th>NOTA FISCAL</th>
+              <th>SACADO</th>
+              <th>CEDENTE</th>
+              <th>EMISSÃO</th>
+              <th>VALOR</th>
+              <th>STATUS</th>
+            </tr> 
+          </thead>
+          {
+            orders.map((order, key) => {
+              const { orderNumber, emissionDate, value, buyer, provider } = order;
+              const [year, month, day] = emissionDate.replace(/T.+/, "").split("-");
+              const money = new Intl
+                .NumberFormat(undefined, { style: "currency", currency: "BRL" })
+                .format(value);
 
-            return (
-              <tr key={ key }>
-                <td>{ orderNumber }</td>
-                <td>{ buyer.name }</td>
-                <td>{ provider.name }</td>
-                <td>{ `${day}/${month}/${year}` }</td>
-                <td>{ money }</td>
-                <td>RECEBIDO</td>
-                <button>Dados do cedente</button>
-              </tr>
-            )
-          })
-        }
-      </table>
+              return (
+                <tbody>
+                  <tr key={ key }>
+                    <td>{ orderNumber }</td>
+                    <td>{ buyer.name }</td>
+                    <td>{ provider.name }</td>
+                    <td>{ `${day}/${month}/${year}` }</td>
+                    <td>{ money }</td>
+                    <td>RECEBIDO</td>
+                    <td><button>Dados do cedente</button></td>
+                  </tr>
+                </tbody>
+              )
+            })
+          }
+        </table>
+      </main>
     </div>
   )
 };

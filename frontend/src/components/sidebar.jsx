@@ -1,16 +1,18 @@
-import CashforceLogo from "../assets/cashforce-main-logo.svg";
-import Hands from "../assets/cashforce-hands.svg";
+import CashforceLogo from "./CashforceLogo";
+import CashforceHands from "./CashforceHands";
 
 const Sidebar = () => {
 
   return (
-    <div className="sidebar">
-      <img src={CashforceLogo} alt="" />
+    <nav className="sidebar">
+      <div className="logo-container">
+        <CashforceLogo />
+      </div>
       <div className="menu-item">
-        <img src={Hands} alt="" />
+        <CashforceHands stroke="#00AD8C" />
         <p>Notas fiscais</p>
       </div>
-    </div>
+    </nav>
   );
 };
 
