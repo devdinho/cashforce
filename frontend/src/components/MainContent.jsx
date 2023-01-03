@@ -59,8 +59,8 @@ const MainContent = () => {
                 .format(value);
 
               return (
-                <tbody>
-                  <tr key={ key }>
+                <tbody key={ key }>
+                  <tr>
                     <td>{ orderNumber }</td>
                     <td>{ buyer.name }</td>
                     <td>{ provider.name }</td>
