@@ -5,7 +5,7 @@ const Provider = require("../models/Provider");
 const getOrders = async () => {
   try {
     const orders = await Order.findAll({
-      attributes: ["orderNumber", "emissionDate", "value"],
+      attributes: ["orderNumber", "emissionDate", "value", "orderStatusBuyer"],
       include: [
         { model: Buyer, attributes: ["name"] },
         { model: Provider, attributes: ["name"] },
@@ -15,6 +15,7 @@ const getOrders = async () => {
     return orders;
   } catch(err) {
     console.log(err);
+    throw { message: "Something went wrong" };
   }
 }
 
