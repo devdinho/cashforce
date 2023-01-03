@@ -14,7 +14,9 @@ Como instalar e rodar o projeto:
   
     npm start
   
-  Backend estará disponível no endpoint: localhost:3000/api
+  Backend estará disponível no endpoint:
+  
+    localhost:3000/api
 
   Na pasta raiz do frontend, instale as dependências:
   
