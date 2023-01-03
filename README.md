@@ -53,5 +53,5 @@ Configurações atuais:
     backend/src/config/database.js
 
     username: "root",
-    password: "",
+    password: null,
     database: "cashforce_v3"
