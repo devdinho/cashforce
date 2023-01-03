@@ -78,7 +78,7 @@ body {
   margin-bottom: 1.375rem;
   line-height: 1.25rem;
   column-gap: 0.563rem;
-  row-gap: 1rem;
+  row-gap: .85rem;
 }
 
 .notas-fiscais-container h3 {
@@ -89,6 +89,8 @@ body {
 .notas-fiscais-container p {
   flex: 100%;
   color: #727D94;
+  font-size: 0.875rem;
+  font-weight: 400;
 }
 
 table {
